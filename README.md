@@ -91,7 +91,7 @@ python serve_mem.py        # -> http://127.0.0.1:8497/
 
 | 文件 | 作用 |
 |---|---|
-| [技术文档-神经元架构.md](技术文档-神经元架构.md) | **完整技术文档** |
+| [技术文档-神经元架构.md](docs/技术文档-神经元架构.md) | **完整技术文档** |
 | [serve_mem.py](serve_mem.py) | 知识服务（HTTP + 网页） |
 | [memory_store.py](memory_store.py) | 记忆存储层（真源 ↔ 索引） |
 | [memory_check.py](memory_check.py) | 记忆一致性体检 |
