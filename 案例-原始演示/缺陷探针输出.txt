@@ -1,0 +1,23 @@
+=== 探针 1：MathNeuron 到底用不用记忆层？ ===
+冷备=0条, 热备=1条(答案999) -> process(5+3) = [8] 置信度 0.95
+热备条目 use_count = [0] (0 表示压根没被读过)
+温备条数 = 0
+
+=== 探针 2：故意学的 3 个错误答案，能不能被‘验证’拦下？ ===
+热备内容: [([5, 3, 1], [10]), ([7, 2, 0], [20]), ([9, 4, 0], [7])]
+巩固结果: {'verified_memories': 3, 'error_rate': 0.0}
+进入温备(即“经验证”)的错误记忆: [([5, 3, 1], [10], 1.0), ([7, 2, 0], [20], 1.0), ([9, 4, 0], [7], 1.0)]
+关键：cos([10],[5]) = 1.0 -> 余弦只看方向，[10] 和 [5] 被判为“完全一致”
+_validate_entry 的输入只用 output_result，压根不看 input_pattern： 答案是 999 的记忆照样能通过 5+3 的验证
+
+=== 探针 3：其它已存在的裂缝 ===
+冷备里的 input_pattern 是字符串数组: <U21
+  一旦真拿它做余弦检索就会炸: ValueError could not convert string to float: np.str_('add')
+learn_from_experience('difference') 后 diff_1.hot_store 条数 = 0 (神经元注册名是 diff_1，代码拼的是 difference_1 -> 静默丢弃)
+
+=== 探针 4：分区投票有没有意义？ ===
+Traceback (most recent call last):
+  File "E:\aqca\work\.tmp\ds-share\probe.py", line 51, in <module>
+    c = sim.SpecializedNeuronCluster("c", "any")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'sim' has no attribute 'SpecializedNeuronCluster'

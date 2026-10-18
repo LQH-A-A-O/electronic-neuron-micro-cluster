@@ -1,0 +1,36 @@
+# ===== 数据与模型（绝不入库）=====
+data/
+*.gguf
+*.pth
+*.npz
+*.npy
+*.data
+*.data.gz
+*.tar.gz
+*.jsonl
+models/
+
+# ===== 实验产物 =====
+out/
+refs/
+*.log
+
+# ===== 索引（可从 .memory/*.md 重建）=====
+.memory/index.json
+.memory/meta.json
+
+# ===== 备份 =====
+*.bak
+*.old
+*.polluted.bak
+
+# ===== Python =====
+__pycache__/
+*.pyc
+.venv/
+
+# ===== 临时 =====
+.tmp_*
+
+# ===== 内部草稿（可选保留，见下方说明）=====
+# 报告-阶段*.md 与 exp/ 下的历史实验脚本保留，它们是结论的证据链。
